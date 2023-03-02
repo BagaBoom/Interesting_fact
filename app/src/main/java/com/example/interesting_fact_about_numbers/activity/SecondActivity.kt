@@ -27,20 +27,7 @@ class SecondActivity : AppCompatActivity() {
     private var fact = ""
     private var number = ""
 
-    override fun onPause() {
-        super.onPause()
 
-        val item = NumbersFact(
-            null,
-            number,
-            fact
-        )
-        Thread {
-            //ето не правильно
-            Log.e("infoItem", Gson().toJson(item));
-            AppDB.instance.getDatabase()!!.getDao().insert(item)
-        }.start()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +47,11 @@ class SecondActivity : AppCompatActivity() {
                     "http://numbersapi.com/" + number
                 )
             }
+            AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
+                null,
+                number,
+                fact
+            ))
             bindingClass.textView2.text = fact
         }
 
@@ -71,6 +63,11 @@ class SecondActivity : AppCompatActivity() {
         if(!number.toString().trim().equals("")) {
             fact = runBlocking { UrlReader().getTextFromUrl("http://numbersapi.com/" + number) }
             bindingClass.textView2.text = fact
+            AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
+                null,
+                number,
+                fact
+            ))
         }else{
             Toast.makeText(this,"Поле пустое",Toast.LENGTH_LONG).show()
         }
