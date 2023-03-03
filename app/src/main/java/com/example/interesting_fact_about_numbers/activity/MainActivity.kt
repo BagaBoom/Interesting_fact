@@ -10,8 +10,6 @@ import com.example.interesting_fact_about_numbers.AppDB
 import com.example.interesting_fact_about_numbers.Contance
 import com.example.interesting_fact_about_numbers.activity.adapters.MyAdapter
 import com.example.interesting_fact_about_numbers.databinding.ActivityMainBinding
-import com.example.interesting_fact_about_numbers.db.MainDb
-import com.example.interesting_fact_about_numbers.db.NumbersFact
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,14 +22,13 @@ class MainActivity : AppCompatActivity() {
         updateAdapter()
     }
 
-
     fun LiveListener() {
         AppDB.instance.getDatabase()!!.getDao().getAllItem().asLiveData().observe(this){
             updateAdapter()
         }
     }
 
-    fun onClickGetRandomFact(view : View){
+    fun onClickGetRandomFact(view: View){
         val intent = Intent(this, SecondActivity::class.java)
         intent.putExtra(Contance.GET_FACT, Contance.GET_RANDOM_FACT)
         startActivity(intent)
