@@ -44,6 +44,11 @@ class SecondActivity : AppCompatActivity() {
                     "http://numbersapi.com/" + number
                 )
             }
+            /*AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
+                null,
+                number,
+                fact
+            ))*/
             AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
                 null,
                 number,
