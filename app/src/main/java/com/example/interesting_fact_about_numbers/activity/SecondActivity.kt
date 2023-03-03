@@ -1,7 +1,8 @@
 package com.example.interesting_fact_about_numbers.activity
 
+
 import android.os.Bundle
-import android.util.Log
+
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -12,10 +13,8 @@ import com.example.interesting_fact_about_numbers.AppDB
 import com.example.interesting_fact_about_numbers.Contance
 import com.example.interesting_fact_about_numbers.R
 import com.example.interesting_fact_about_numbers.databinding.ActivitySecondBinding
-import com.example.interesting_fact_about_numbers.db.MainDb
 import com.example.interesting_fact_about_numbers.db.NumbersFact
 import com.example.interesting_fact_about_numbers.net.UrlReader
-import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 import kotlin.random.Random
 
@@ -26,8 +25,6 @@ class SecondActivity : AppCompatActivity() {
     private  var signState = "empty"
     private var fact = ""
     private var number = ""
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +51,6 @@ class SecondActivity : AppCompatActivity() {
             ))
             bindingClass.textView2.text = fact
         }
-
     }
 
     @OnClick(R.id.btStart)
@@ -77,5 +73,4 @@ class SecondActivity : AppCompatActivity() {
         if (item.itemId == android.R.id.home) finish()
         return true
     }
-
 }
