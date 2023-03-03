@@ -1,9 +1,16 @@
 package com.example.interesting_fact_about_numbers.net
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+
+
+import kotlinx.coroutines.*
+
 import retrofit2.Retrofit
+
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Url
+
+
 
 class UrlReader {
     private val retrofit = Retrofit.Builder()
@@ -19,7 +26,11 @@ class UrlReader {
     }
 
     interface ApiService {
-        @retrofit2.http.GET
-        suspend fun getText(@retrofit2.http.Url url: String): String
+        @GET
+        suspend fun getText(@Url url: String): String
     }
 }
+
+
+
+
