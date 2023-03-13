@@ -41,14 +41,9 @@ class SecondActivity : AppCompatActivity() {
             number = Random.nextInt(0, 4000).toString()
             fact = runBlocking {
                 UrlReader().getTextFromUrl(
-                    "http://numbersapi.com/" + number
+                    number
                 )
             }
-            /*AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
-                null,
-                number,
-                fact
-            ))*/
             AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
                 null,
                 number,
@@ -62,7 +57,7 @@ class SecondActivity : AppCompatActivity() {
     fun btsTART(){
         number = bindingClass.edNumber.text.toString()
         if(!number.toString().trim().equals("")) {
-            fact = runBlocking { UrlReader().getTextFromUrl("http://numbersapi.com/" + number) }
+            fact = runBlocking { UrlReader().getTextFromUrl(number) }
             bindingClass.textView2.text = fact
             AppDB.instance.getDatabase()!!.getDao().insert( NumbersFact(
                 null,

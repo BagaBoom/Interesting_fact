@@ -8,13 +8,14 @@ import retrofit2.Retrofit
 
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Url
+import retrofit2.http.Path
+
 
 
 
 class UrlReader {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://numbersapi.com/")
+        .baseUrl("http://numbersapi.com")
         .addConverterFactory(ScalarsConverterFactory.create())
         .build()
     private val apiService = retrofit.create(ApiService::class.java)
@@ -26,8 +27,8 @@ class UrlReader {
     }
 
     interface ApiService {
-        @GET
-        suspend fun getText(@Url url: String): String
+        @GET("{url}")
+        suspend fun getText(@Path("url") url: String): String
     }
 }
 
